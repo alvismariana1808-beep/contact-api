@@ -2,24 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Contacto extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory,SoftDeletes;
 
-    protected $table = "Contacto";
-    protected $fillable = [
-        'usuario_id',
-        'nombre',
-        'correo',
-        'avatar',
-        'telefono'
-    ];
+    protected $fillable = ['usuario_id', 'nombre', 'apellido', 'foto', 'email', 'telefono'];
 
-    function usuario(){
+    public function usuario()
+    {
         return $this->belongsTo(Usuario::class);
     }
+
+    protected $table = 'contactos';
 }
