@@ -25,7 +25,7 @@ class UsuarioRequest extends FormRequest
         return [
             'email' => ['required'],
             'password' => ['required', 'string'],
-            'device' => ['required', 'string'],
+            'device' => ['nullable|string', 'string'],
         ];
     }
 

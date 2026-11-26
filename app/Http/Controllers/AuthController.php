@@ -26,8 +26,13 @@ class AuthController extends Controller
             return response()->json(['message' => 'correo o contraseña invalido']);
 
         }
-        // estudiar esto que todavia no me lo se bien
-        $token = $usuario->createToken($request->validated('device'))->plainTextToken;
+         $device = null;
+        if ($request->validated('device')) {
+            $device = $request->validated('device');
+        } else {
+            $device = 'dispositivo';
+        }
+        $token = $usuario->createToken($device)->plainTextToken;
 
         return response()->json(['message' => 'datos de incio correctos',
 
